@@ -225,6 +225,50 @@
     letter-spacing: 0.8rem;
   }
 
+  /* ══ 快速導覽 ══ */
+  .jump-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg-cat);
+    border-bottom: 2px solid var(--gold);
+    padding: 0.65rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .jump-nav label {
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    white-space: nowrap;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-weight: 400;
+  }
+  .jump-nav select {
+    flex: 1;
+    font-size: 1rem;
+    font-family: 'Noto Serif TC', serif;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--divider);
+    border-radius: 0;
+    padding: 0.45rem 0.6rem;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23a07830' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 10px;
+    padding-right: 2rem;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+  }
+  .jump-nav select:focus {
+    outline: 2px solid var(--gold);
+    outline-offset: 1px;
+  }
+
   /* ══ 手機微調 ══ */
   @media (max-width: 400px) {
     :root {
@@ -236,6 +280,7 @@
     .category-header,
     .sutra-wrap,
     .closing { margin-left: 0.8rem; margin-right: 0.8rem; }
+    .jump-nav { padding: 0.55rem 0.8rem; }
   }
 </style>
 </head>
@@ -248,6 +293,44 @@
   <div class="tagline">難與不難，決定在一念心</div>
 </header>
 
+<!-- ── 快速導覽 ── -->
+<nav class="jump-nav">
+  <label for="jump-select">前往</label>
+  <select id="jump-select" onchange="document.getElementById(this.value).scrollIntoView({behavior:'smooth'}); this.selectedIndex=0;">
+    <option value="" disabled selected>選擇類別 ▾</option>
+    <optgroup label="第一類 · 外緣障礙（處境之難）">
+      <option value="nan1">　一　貧窮布施難</option>
+      <option value="nan2">　二　豪貴學道難</option>
+      <option value="nan3">　三　棄命必死難</option>
+      <option value="nan4">　四　得睹佛經難</option>
+      <option value="nan5">　五　生值佛世難</option>
+    </optgroup>
+    <optgroup label="第二類 · 感官與欲望（身心之難）">
+      <option value="nan6">　六　忍色忍欲難</option>
+      <option value="nan7">　七　見好不求難</option>
+      <option value="nan8">　八　被辱不瞋難</option>
+      <option value="nan9">　九　有勢不臨難</option>
+    </optgroup>
+    <optgroup label="第三類 · 心念與我執（自心之難）">
+      <option value="nan10">　十　觸事無心難</option>
+      <option value="nan11">　十一　除滅我慢難</option>
+      <option value="nan12">　十二　不輕未學難</option>
+      <option value="nan13">　十三　心行平等難</option>
+    </optgroup>
+    <optgroup label="第四類 · 言行與關係（處世之難）">
+      <option value="nan14">　十四　不說是非難</option>
+      <option value="nan15">　十五　會善知識難</option>
+      <option value="nan16">　十六　廣學博究難</option>
+    </optgroup>
+    <optgroup label="第五類 · 境界與智慧（道力之難）">
+      <option value="nan17">　十七　見性學道難</option>
+      <option value="nan18">　十八　隨化度人難</option>
+      <option value="nan19">　十九　睹境不動難</option>
+      <option value="nan20">　二十　善解方便難</option>
+    </optgroup>
+  </select>
+</nav>
+
 <!-- ── 經文 ── -->
 <div class="sutra-wrap">
   <div class="sutra-box">
@@ -258,14 +341,14 @@
 <!-- ══════════════════════════
      第一類：外緣障礙
 ══════════════════════════ -->
-<div class="category-block">
+<div class="category-block" id="cat1">
   <div class="category-header">
     <div class="category-label">第一類 · 五難</div>
     <div class="category-name">外緣障礙　處境之難</div>
     <div class="category-desc">這五難屬於外在條件的障礙——貧富、生死、時節因緣，非個人意志輕易可控，卻正是修行的起點。</div>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan1">
     <div class="nan-meta">
       <span class="nan-num">一</span>
       <span class="nan-badge">難</span>
@@ -275,7 +358,7 @@
     <p class="nan-body">貧窮是過去慳貪不布施的果報。要在一無所有時仍能發心布施，需突破習氣與心理障礙。然而一旦明白「布施能把貧窮布施掉」的道理，即使物質匱乏，也能樂善好施。布施不限財施，法施、慈悲心的布施同樣產生無量福報。難與不難，端在認知是否清晰。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan2">
     <div class="nan-meta">
       <span class="nan-num">二</span>
       <span class="nan-badge">難</span>
@@ -285,7 +368,7 @@
     <p class="nan-body">擁有地位、財富與聲望之人，對所擁有的一切容易產生執著與貪愛，要他捨棄現世榮華去修行學道，並非易事。唯有了解世間一切皆無常，只有這念清淨心才是真正的富貴，捨豪貴出家學道才不再是難事。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan3">
     <div class="nan-meta">
       <span class="nan-num">三</span>
       <span class="nan-badge">難</span>
@@ -295,7 +378,7 @@
     <p class="nan-body">捨棄生命對一般人而言極為艱難。然而修行若能悟到色身無常、唯有法身才是蓋天蓋地的真生命，「大死一番」便成為解脫的關鍵。古有比丘寧渴死而不飲有蟲之水，持戒清淨往生天界，印證了「捨命得道」的真義。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan4">
     <div class="nan-meta">
       <span class="nan-num">四</span>
       <span class="nan-badge">難</span>
@@ -305,7 +388,7 @@
     <p class="nan-body">古代得見佛經須具大福報與殊勝因緣；法珍比丘尼斷臂化緣刻經、玄奘大師跋涉二十年取經，皆以生命換取佛法流通。今日佛經雖唾手可得，若視而不見、不知珍惜，等同「得睹佛經難」。真正難的，是能恭敬受持、深入契入。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan5">
     <div class="nan-meta">
       <span class="nan-num">五</span>
       <span class="nan-badge">難</span>
@@ -320,14 +403,14 @@
 <!-- ══════════════════════════
      第二類：感官與欲望
 ══════════════════════════ -->
-<div class="category-block">
+<div class="category-block" id="cat2">
   <div class="category-header">
     <div class="category-label">第二類 · 四難</div>
     <div class="category-name">感官與欲望　身心之難</div>
     <div class="category-desc">面對外境的誘惑、順境的貪求、逆境的憤怒、權力的腐化，都是感官與情緒層次的考驗。</div>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan6">
     <div class="nan-meta">
       <span class="nan-num">六</span>
       <span class="nan-badge">難</span>
@@ -337,7 +420,7 @@
     <p class="nan-body">色法外境與心中欲愛，是生死的根本。修忍，從「伏忍」降伏妄想，次第到「無生法忍」乃至「寂滅忍」，方能如如不動。《佛遺教經》言「忍之為德，持戒苦行所不能及」。修行的關鍵即在一個「忍」字——忍成就了，其餘功德自然隨之成就。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan7">
     <div class="nan-meta">
       <span class="nan-num">七</span>
       <span class="nan-badge">難</span>
@@ -347,7 +430,7 @@
     <p class="nan-body">見到好的境界時，心不動、不貪求、不強奪，是不容易的。「有求皆苦，無求即樂。」能做到「功德歸三寶，好事給他人，壞事自己承擔」，心中自然安住無諍，見好不求便不再是難事。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan8">
     <div class="nan-meta">
       <span class="nan-num">八</span>
       <span class="nan-badge">難</span>
@@ -357,7 +440,7 @@
     <p class="nan-body">受言語羞辱或當面受窘時，不起瞋心、不發脾氣，靠的是忍辱的功夫。歷史上韓信忍「胯下之辱」而成就大業，正是明證。事情過後真相自然大白，是非有其論斷，自己也因此成就了忍辱的德行。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan9">
     <div class="nan-meta">
       <span class="nan-num">九</span>
       <span class="nan-badge">難</span>
@@ -372,14 +455,14 @@
 <!-- ══════════════════════════
      第三類：心念與我執
 ══════════════════════════ -->
-<div class="category-block">
+<div class="category-block" id="cat3">
   <div class="category-header">
     <div class="category-label">第三類 · 四難</div>
     <div class="category-name">心念與我執　自心之難</div>
     <div class="category-desc">這四難都指向同一個根源：「我」的執著。去除功德執、優越感、比較心與分別心，是修行的核心功課。</div>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan10">
     <div class="nan-meta">
       <span class="nan-num">十</span>
       <span class="nan-badge">難</span>
@@ -389,7 +472,7 @@
     <p class="nan-body">「觸事」仍要做事，且要盡心盡力；「無心」是做完之後不執著功德、不起我慢，心如明鏡，「漢來漢現，像去則無」。非逃避現實，而是如《金剛經》所言：以無我、無人相修一切善法，方是真正的般若智慧。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan11">
     <div class="nan-meta">
       <span class="nan-num">十一</span>
       <span class="nan-badge">難</span>
@@ -399,7 +482,7 @@
     <p class="nan-body">慢、過慢、慢過慢、我慢、增上慢、卑慢、邪慢——七慢皆以我慢為根本。要除滅我慢，須修析空觀：色身是四大假合，受想行識亦是空性，無我亦無我所。反覆緣真，待觀行成就，一念相應，便能契入空性，根本瓦解慢心。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan12">
     <div class="nan-meta">
       <span class="nan-num">十二</span>
       <span class="nan-badge">難</span>
@@ -409,7 +492,7 @@
     <p class="nan-body">修行有先後、戒臘有長幼，但「有道不在年高」，悟道靠根機與因緣。一切眾生皆有佛性，皆當成佛，新學或許一念相應便超越老參。常不輕菩薩禮拜一切眾生的精神，告誡我們：以慈悲謙卑對待每一個人，輕視未學只是慢心的障礙。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan13">
     <div class="nan-meta">
       <span class="nan-num">十三</span>
       <span class="nan-badge">難</span>
@@ -424,14 +507,14 @@
 <!-- ══════════════════════════
      第四類：言行與關係
 ══════════════════════════ -->
-<div class="category-block">
+<div class="category-block" id="cat4">
   <div class="category-header">
     <div class="category-label">第四類 · 三難</div>
     <div class="category-name">言行與關係　處世之難</div>
     <div class="category-desc">與人相處的口業管理、識別真正的善知識、以及學習的廣度與深度——屬於在群體與社會中修行的難點。</div>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan14">
     <div class="nan-meta">
       <span class="nan-num">十四</span>
       <span class="nan-badge">難</span>
@@ -441,7 +524,7 @@
     <p class="nan-body">眼見的世間事往往非真相，以訛傳訛只會釀禍。即便見到他人的過失，宣揚出去舌根即不清淨，自己也捲入是非。「若見他人非，自非卻是左」——向內觀心返照，檢討身口意三業，自然無暇說人是非。謠言止於智者，正念者沉默。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan15">
     <div class="nan-meta">
       <span class="nan-num">十五</span>
       <span class="nan-badge">難</span>
@@ -451,7 +534,7 @@
     <p class="nan-body">能講述正知見、勸人斷惡修善，乃至引導明心見性的人，才是善知識。說人三世因果、論風水禍福者，是邪知邪見而非善知識。遇到真正的善知識，需有自己的福德因緣與願行，遇到了更要虛心學習，方不辜負這份難得的法緣。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan16">
     <div class="nan-meta">
       <span class="nan-num">十六</span>
       <span class="nan-badge">難</span>
@@ -466,14 +549,14 @@
 <!-- ══════════════════════════
      第五類：境界與智慧
 ══════════════════════════ -->
-<div class="category-block">
+<div class="category-block" id="cat5">
   <div class="category-header">
     <div class="category-label">第五類 · 四難</div>
     <div class="category-name">境界與智慧　道力之難</div>
     <div class="category-desc">修行較深層的成就：見性是根本，定力是基礎，度人是大悲的展現，善解方便是智慧的圓熟。</div>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan17">
     <div class="nan-meta">
       <span class="nan-num">十七</span>
       <span class="nan-badge">難</span>
@@ -483,7 +566,7 @@
     <p class="nan-body">「性」即師父說法、諸位聽法的這念心。悟到了，是真正進入修道位，之後圓修六波羅蜜而不執著，如如不動。未見性前，則從事上用功——誦經、持咒、打坐、廣修善法——由事到理，業障消除，自能漸漸契悟本心。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan18">
     <div class="nan-meta">
       <span class="nan-num">十八</span>
       <span class="nan-badge">難</span>
@@ -493,7 +576,7 @@
     <p class="nan-body">隨著因緣以佛法啟發眾生、引導出世善根，需要智慧、慈悲、願行與福德兼備。辦法會、設道場、把握時節因緣，讓人產生法喜與禪悅，一旦善根慧根現前，使人發出世心，便是隨化度人的成就。每一個善緣，都是渡人的機會。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan19">
     <div class="nan-meta">
       <span class="nan-num">十九</span>
       <span class="nan-badge">難</span>
@@ -503,7 +586,7 @@
     <p class="nan-body">稱、譏、毀、譽、利、衰、苦、樂「八風」現前，心要如如不動。非迷糊傻瓜，而是真正有定力——定生智慧，智慧轉境。心清淨，外境隨之轉化為淨土；逃境安心是治標，契悟本心才是根本。平時薰習禪定，臨境自然不為所動。</p>
   </div>
 
-  <div class="nan-item">
+  <div class="nan-item" id="nan20">
     <div class="nan-meta">
       <span class="nan-num">二十</span>
       <span class="nan-badge">難</span>
