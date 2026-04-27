@@ -233,13 +233,62 @@ const MEMBERS = {
   '1910': '法主'
 };
 
-let currentMember = null;        // { code, dharmaName }
-let conversationHistory = [];    // ★ 新增：對話歷史陣列
+let currentMember = null;
+let conversationHistory = [];
+
+// ★ 作業流程狀態
+// null='一般問答' / 'step1'=等選哪一難 / 'step2'=等覺察 / 'step3'=等覺照 / 'done'=最終回饋
+let hwState = null;
+let chosenDifficulty = '';
+
+const HW_INSTRUCTIONS = {
+  step1:
+`【作業引導模式－步驟一】
+你現在正在引導慈心觀照學習單作業。
+請只做一件事：詢問學員想探討二十難中的哪一難。
+不要回答課程問題，不要做其他說明，只問這一個問題。`,
+
+  step2: function(d) { return (
+`【作業引導模式－步驟二】
+學員已選擇：「${d}」。
+請只做一件事：詢問學員覺察到自己有什麼心念或情緒（也就是發現了什麼煩惱）。
+不要解釋這一難的內容，不要跑到步驟三，只問覺察這一個問題。`); },
+
+  step3: function(d) { return (
+`【作業引導模式－步驟三】
+學員選的難：「${d}」，已完成覺察回答。
+請只做一件事：詢問學員用什麼法門來轉變或改變這個煩惱。
+不要給回饋，不要提前總結，只問覺照這一個問題。`); },
+
+  done: function(d) { return (
+`【作業引導模式－步驟四，最終回饋】
+學員選的難：「${d}」，覺察與覺照均已填寫完畢。
+請給予整體鼓勵與補充說明，引用課程內容呼應學員的分享，
+結尾加上「感恩師兄的用心，祝福您在修行路上精進！🙏」，完成後不要再問問題。`); }
+};
+
+function getHwInstruction() {
+  if (!hwState) return '';
+  if (hwState === 'step1') return '\n\n' + HW_INSTRUCTIONS.step1;
+  if (hwState === 'step2') return '\n\n' + HW_INSTRUCTIONS.step2(chosenDifficulty);
+  if (hwState === 'step3') return '\n\n' + HW_INSTRUCTIONS.step3(chosenDifficulty);
+  if (hwState === 'done')  return '\n\n' + HW_INSTRUCTIONS.done(chosenDifficulty);
+  return '';
+}
+
+function advanceHwState(userText) {
+  if (!hwState) return;
+  if (hwState === 'step1') { chosenDifficulty = userText; hwState = 'step2'; return; }
+  if (hwState === 'step2') { hwState = 'step3'; return; }
+  if (hwState === 'step3') { hwState = 'done';  return; }
+  if (hwState === 'done')  { hwState = null; chosenDifficulty = ''; }
+}
 
 function setMember(code, dharmaName) {
   currentMember = { code, dharmaName };
-  // 重置對話歷史（換人重來）
   conversationHistory = [];
+  hwState = null;
+  chosenDifficulty = '';
   document.getElementById('header-sub').textContent = dharmaName + ' 師兄';
   document.getElementById('status-pill').innerHTML =
     '<span class="dot"></span>' + dharmaName + ' 師兄 已識別';
@@ -334,9 +383,24 @@ async function sendMessage() {
     return;
   }
 
-  // ★ 已識別身份：組合帶法名的訊息，加入歷史，一起送給 GAS
-  const msgWithId = '【學員：' + currentMember.dharmaName + ' 師兄（已驗證）】\n' + text;
-  const userInner = appendMsg('user', text);   // ★ 直接儲存 inner 元素
+  // ★ 已識別身份
+  const isHwTrigger = /學習單|作業|慈心觀照|覺察|覺照|我要開始寫/.test(text);
+
+  // 觸發作業模式
+  if (isHwTrigger && !hwState) {
+    hwState = 'step1';
+  }
+
+  // 推進作業步驟（在送出前，依目前狀態決定下一步）
+  // 注意：step1 是 Claude 問，學員回答後才推進到 step2
+  // 所以這裡在「學員送出訊息」時推進
+  const hwInstr = getHwInstruction();   // 先取目前步驟的指令
+  if (hwState && !isHwTrigger) {
+    advanceHwState(text);               // 學員回答後推進到下一步
+  }
+
+  const msgWithId = '【學員：' + currentMember.dharmaName + ' 師兄（已驗證）】\n' + text + hwInstr;
+  const userInner = appendMsg('user', text);
   showThinking();
 
   // 把這次用戶訊息加入歷史
