@@ -1,608 +1,378 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>佛說四十二章經 · 人有二十難</title>
-
-<!-- OG Meta -->
-<meta property="og:type"        content="article">
-<meta property="og:title"       content="四十二章經－舉難勸修">
-<meta property="og:description" content="佛言：人有二十難。難與不難，決定在一念心。明白其中的道理，任何事都不難；不明白道理，什麼事情都很困難。">
-<meta property="og:locale"      content="zh_TW">
-
-<!-- Twitter Card -->
-<meta name="twitter:card"        content="summary">
-<meta name="twitter:title"       content="四十二章經－舉難勸修">
-<meta name="twitter:description" content="佛言：人有二十難。難與不難，決定在一念心。明白其中的道理，任何事都不難；不明白道理，什麼事情都很困難。">
+<title>學習助教</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700;900&family=Noto+Sans+TC:wght@300;400;500&display=swap');
-
   :root {
-    --ink:        #1a1208;
-    --paper:      #f6f1e8;
-    --gold:       #a07830;
-    --gold-light: #c89a50;
-    --red:        #8b1a1a;
-    --muted:      #6b5f50;
-    --divider:    #d4c8b0;
-    --bg-cat:     #ede6d4;
-    --bg-item:    #f9f5ee;
-
-    /* 字級 — 長輩友善 */
-    --fs-body:    1.15rem;   /* 本文 */
-    --fs-sub:     1rem;      /* 副標 */
-    --fs-title:   1.35rem;   /* 難名 */
-    --fs-cat:     1.05rem;   /* 分類標題 */
-    --fs-num:     2rem;      /* 序號 */
-    --lh:         2.0;
+    --bg: #f5f7fa;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --text: #2d3748;
+    --muted: #718096;
+    --accent: #553c9a;
+    --accent-light: #e9d8fd;
+    --accent-dark: #44337a;
+    --success: #276749;
+    --success-light: #c6f6d5;
+    --bubble-user: #553c9a;
+    --shadow: 0 2px 10px rgba(0,0,0,0.08);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Noto Serif TC', serif;
-    line-height: var(--lh);
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 0 0 4rem;
-  }
-
-  /* ══ 頁頭 ══ */
-  header {
-    text-align: center;
-    padding: 3rem 1.5rem 2rem;
-    background: linear-gradient(to bottom, #e8e0cc, var(--paper));
-    border-bottom: 2px solid var(--gold);
-  }
-  header .eyebrow {
-    font-size: 0.85rem;
-    letter-spacing: 0.4em;
-    color: var(--muted);
-    font-weight: 300;
-    margin-bottom: 0.5rem;
-  }
-  header h1 {
-    font-size: clamp(1.8rem, 7vw, 2.6rem);
-    font-weight: 900;
-    letter-spacing: 0.12em;
-    line-height: 1.3;
-  }
-  header .tagline {
-    margin-top: 0.5rem;
-    font-size: 0.95rem;
-    color: var(--gold);
-    letter-spacing: 0.35em;
-    font-weight: 300;
-  }
-
-  /* ══ 經文區塊 ══ */
-  .sutra-wrap {
-    margin: 2rem 1.2rem 0;
-  }
-  .sutra-box {
-    background: var(--bg-cat);
-    border-left: 4px solid var(--gold);
-    padding: 1.5rem 1.4rem 1.5rem 1.6rem;
-    position: relative;
-  }
-  .sutra-box::before {
-    content: '原典經文';
-    position: absolute;
-    top: -0.7rem;
-    left: 1.2rem;
-    background: var(--bg-cat);
-    padding: 0 0.5rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.3em;
-    color: var(--gold);
-  }
-  .sutra-text {
-    font-size: var(--fs-body);
-    line-height: 2.0;
-    letter-spacing: 0.05em;
-    text-align: justify;
-  }
-
-  /* ══ 分類大標題 ══ */
-  .category-block {
-    margin-top: 2.6rem;
-  }
-
-  .category-header {
-    margin: 0 1.2rem;
-    padding: 1rem 1.2rem;
-    background: var(--bg-cat);
-    border-top: 3px solid var(--gold);
-    border-bottom: 1px solid var(--divider);
-  }
-  .category-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.45em;
-    color: var(--gold);
-    font-weight: 400;
-    margin-bottom: 0.2rem;
     font-family: 'Noto Sans TC', sans-serif;
-  }
-  .category-name {
-    font-size: clamp(1.1rem, 4vw, 1.3rem);
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: var(--ink);
-    line-height: 1.4;
-  }
-  .category-desc {
-    margin-top: 0.4rem;
-    font-size: 0.9rem;
-    color: var(--muted);
-    font-weight: 300;
-    letter-spacing: 0.06em;
-    line-height: 1.7;
-  }
-
-  /* ══ 每一難條目 ══ */
-  .nan-item {
-    margin: 0 1.2rem;
-    padding: 1.8rem 0 1.8rem;
-    border-bottom: 1px solid var(--divider);
-  }
-
-  /* 序號列 */
-  .nan-meta {
+    background: var(--bg);
+    color: var(--text);
+    height: 100dvh;
     display: flex;
-    align-items: baseline;
-    gap: 0.6rem;
-    margin-bottom: 0.55rem;
-  }
-  .nan-num {
-    font-size: var(--fs-num);
-    font-weight: 900;
-    color: var(--gold-light);
-    line-height: 1;
-    font-family: 'Noto Serif TC', serif;
-    flex-shrink: 0;
-  }
-  .nan-badge {
-    font-size: 0.72rem;
-    letter-spacing: 0.3em;
-    color: var(--muted);
-    font-family: 'Noto Sans TC', sans-serif;
-    font-weight: 300;
-    padding-bottom: 0.1rem;
+    flex-direction: column;
   }
 
-  /* 難名 */
-  .nan-title {
-    font-size: var(--fs-title);
-    font-weight: 700;
-    color: var(--red);
-    letter-spacing: 0.12em;
-    line-height: 1.4;
-    margin-bottom: 0.3rem;
-  }
-
-  /* 副標 */
-  .nan-sub {
-    font-size: var(--fs-sub);
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    font-weight: 300;
-    margin-bottom: 0.8rem;
-    font-family: 'Noto Sans TC', sans-serif;
-    line-height: 1.6;
-  }
-
-  /* 本文 */
-  .nan-body {
-    font-size: var(--fs-body);
-    line-height: var(--lh);
-    color: #2a2010;
-    text-align: justify;
-    letter-spacing: 0.03em;
-  }
-
-  /* ══ 結語 ══ */
-  .closing {
-    margin: 3rem 1.2rem 0;
-    padding: 1.6rem 1.4rem;
-    background: var(--bg-cat);
-    border-left: 4px solid var(--gold);
-    text-align: center;
-  }
-  .closing p {
-    font-size: var(--fs-body);
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    line-height: 2;
-  }
-  .closing .mark {
-    display: block;
-    margin-top: 1.2rem;
-    color: var(--gold-light);
-    font-size: 1.1rem;
-    letter-spacing: 0.8rem;
-  }
-
-  /* ══ 快速導覽 ══ */
-  .jump-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--bg-cat);
-    border-bottom: 2px solid var(--gold);
-    padding: 0.65rem 1.2rem;
+  /* Header */
+  header {
+    background: var(--accent);
+    padding: 14px 20px;
     display: flex;
     align-items: center;
-    gap: 0.6rem;
+    justify-content: space-between;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(85,60,154,0.3);
   }
-  .jump-nav label {
-    font-size: 0.78rem;
-    letter-spacing: 0.25em;
-    color: var(--muted);
-    white-space: nowrap;
-    font-family: 'Noto Sans TC', sans-serif;
-    font-weight: 400;
+  .header-left { display: flex; align-items: center; gap: 12px; }
+  .logo {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
   }
-  .jump-nav select {
-    flex: 1;
-    font-size: 1rem;
+  .header-title {
     font-family: 'Noto Serif TC', serif;
-    color: var(--ink);
-    background: var(--paper);
-    border: 1px solid var(--divider);
-    border-radius: 0;
-    padding: 0.45rem 0.6rem;
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23a07830' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.7rem center;
-    background-size: 10px;
-    padding-right: 2rem;
-    cursor: pointer;
-    letter-spacing: 0.05em;
+    font-size: 17px; font-weight: 500;
+    color: #fff; letter-spacing: 0.06em;
   }
-  .jump-nav select:focus {
-    outline: 2px solid var(--gold);
-    outline-offset: 1px;
+  .header-sub { font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+  .status-pill {
+    display: flex; align-items: center; gap: 5px;
+    background: rgba(255,255,255,0.15);
+    color: #fff; font-size: 11px;
+    padding: 4px 10px; border-radius: 20px;
+  }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: #68d391; }
+
+  /* Messages */
+  #messages {
+    flex: 1; overflow-y: auto;
+    padding: 20px 16px;
+    display: flex; flex-direction: column; gap: 14px;
+    scroll-behavior: smooth;
+  }
+  .msg-wrap { display: flex; align-items: flex-end; gap: 8px; animation: fadeUp 0.2s ease; }
+  .msg-wrap.user { flex-direction: row-reverse; }
+  .avatar {
+    width: 30px; height: 30px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 600; flex-shrink: 0;
+  }
+  .avatar.ai {
+    background: var(--accent-light); color: var(--accent);
+    border: 1.5px solid #d6bcfa;
+  }
+  .avatar.user { background: var(--bubble-user); color: #fff; }
+  .msg-inner { display: flex; flex-direction: column; max-width: 76%; }
+  .msg-wrap.user .msg-inner { align-items: flex-end; }
+  .bubble {
+    padding: 10px 14px; border-radius: 16px;
+    font-size: 14px; line-height: 1.75;
+    white-space: pre-wrap; word-break: break-word;
+  }
+  .bubble.ai {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 4px;
+    box-shadow: var(--shadow);
+  }
+  .bubble.user {
+    background: var(--bubble-user);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+  }
+  .saved-badge {
+    font-size: 10px; color: var(--success);
+    margin-top: 4px; display: flex; align-items: center; gap: 3px;
+  }
+  .thinking { display: flex; gap: 5px; padding: 4px 2px; align-items: center; }
+  .thinking span {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent-light);
+    animation: bounce 1.2s ease infinite;
+  }
+  .thinking span:nth-child(2) { animation-delay: 0.2s; }
+  .thinking span:nth-child(3) { animation-delay: 0.4s; }
+  .sys-msg {
+    text-align: center; font-size: 11px; color: var(--muted);
+    padding: 5px 14px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: 20px;
+    align-self: center;
   }
 
-  /* ══ 手機微調 ══ */
-  @media (max-width: 400px) {
-    :root {
-      --fs-body:  1.1rem;
-      --fs-title: 1.25rem;
-      --fs-num:   1.75rem;
-    }
-    .nan-item,
-    .category-header,
-    .sutra-wrap,
-    .closing { margin-left: 0.8rem; margin-right: 0.8rem; }
-    .jump-nav { padding: 0.55rem 0.8rem; }
+  /* Input */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 12px 16px; flex-shrink: 0;
+  }
+  .input-row {
+    display: flex; align-items: flex-end; gap: 8px;
+    background: var(--bg); border: 1.5px solid var(--border);
+    border-radius: 14px; padding: 8px 8px 8px 14px;
+    transition: border-color 0.2s;
+  }
+  .input-row:focus-within { border-color: var(--accent); }
+  #user-input {
+    flex: 1; border: none; background: transparent; resize: none;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 14px; color: var(--text);
+    line-height: 1.6; max-height: 120px; outline: none; min-height: 22px;
+  }
+  #user-input::placeholder { color: var(--muted); }
+  .send-btn {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--accent); color: #fff; border: none;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: background 0.15s, transform 0.1s;
+  }
+  .send-btn:hover { background: var(--accent-dark); }
+  .send-btn:active { transform: scale(0.95); }
+  .send-btn:disabled { background: #c4b5fd; cursor: not-allowed; }
+  .footer-note { text-align: center; font-size: 10px; color: var(--muted); margin-top: 6px; }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(6px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  @keyframes bounce {
+    0%,80%,100% { transform:translateY(0); }
+    40%          { transform:translateY(-5px); }
+  }
+  /* 快捷按鈕 */
+  .quick-btns {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .quick-btn {
+    display: flex; align-items: center; gap: 5px;
+    padding: 6px 12px; border-radius: 20px;
+    border: 1.5px solid var(--accent);
+    background: var(--accent-light);
+    color: var(--accent-dark);
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 13px; cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    white-space: nowrap;
+  }
+  .quick-btn:hover { background: #d6bcfa; }
+  .quick-btn:active { transform: scale(0.97); }
+
+  @media (max-width: 480px) {
+    .msg-inner { max-width: 88%; }
+    .quick-btn { font-size: 12px; padding: 5px 10px; }
   }
 </style>
 </head>
 <body>
 
-<!-- ── 頁頭 ── -->
 <header>
-  <div class="eyebrow">佛說四十二章經<br>第十二章 · 舉難勸修</div>
-  <h1>人有二十難</h1>
-  <div class="tagline">難與不難，決定在一念心</div>
+  <div class="header-left">
+    <div class="logo">📚</div>
+    <div>
+      <div class="header-title">學習助教</div>
+      <div class="header-sub" id="header-sub">依課程內容回答問題</div>
+    </div>
+  </div>
+  <div class="status-pill" id="status-pill"><span class="dot"></span>已連線</div>
 </header>
 
-<!-- ── 快速導覽 ── -->
-<nav class="jump-nav">
-  <label for="jump-select">前往</label>
-  <select id="jump-select" onchange="document.getElementById(this.value).scrollIntoView({behavior:'smooth'}); this.selectedIndex=0;">
-    <option value="" disabled selected>選擇類別 ▾</option>
-    <optgroup label="第一類 · 外緣障礙（處境之難）">
-      <option value="nan1">一　貧窮布施難</option>
-      <option value="nan2">二　豪貴學道難</option>
-      <option value="nan3">三　棄命必死難</option>
-      <option value="nan4">四　得睹佛經難</option>
-      <option value="nan5">五　生值佛世難</option>
-    </optgroup>
-    <optgroup label="第二類 · 感官與欲望（身心之難）">
-      <option value="nan6">六　忍色忍欲難</option>
-      <option value="nan7">七　見好不求難</option>
-      <option value="nan8">八　被辱不瞋難</option>
-      <option value="nan9">九　有勢不臨難</option>
-    </optgroup>
-    <optgroup label="第三類 · 心念與我執（自心之難）">
-      <option value="nan10">十　觸事無心難</option>
-      <option value="nan11">十一　除滅我慢難</option>
-      <option value="nan12">十二　不輕未學難</option>
-      <option value="nan13">十三　心行平等難</option>
-    </optgroup>
-    <optgroup label="第四類 · 言行與關係（處世之難）">
-      <option value="nan14">十四　不說是非難</option>
-      <option value="nan15">十五　會善知識難</option>
-      <option value="nan16">十六　廣學博究難</option>
-    </optgroup>
-    <optgroup label="第五類 · 境界與智慧（道力之難）">
-      <option value="nan17">十七　見性學道難</option>
-      <option value="nan18">十八　隨化度人難</option>
-      <option value="nan19">十九　睹境不動難</option>
-      <option value="nan20">二十　善解方便難</option>
-    </optgroup>
-  </select>
-</nav>
-
-<!-- ── 經文 ── -->
-<div class="sutra-wrap">
-  <div class="sutra-box">
-    <p class="sutra-text">「佛言：人有二十難。貧窮布施難。豪貴學道難。棄命必死難。得睹佛經難。生值佛世難。忍色忍欲難。見好不求難。被辱不瞋難。有勢不臨難。觸事無心難。廣學博究難。除滅我慢難。不輕未學難。心行平等難。不說是非難。會善知識難。見性學道難。隨化度人難。睹境不動難。善解方便難。」</p>
-  </div>
+<div id="messages">
+  <div class="sys-msg">📖 你好！請輸入與課程相關的問題</div>
 </div>
 
-<!-- ══════════════════════════
-     第一類：外緣障礙
-══════════════════════════ -->
-<div class="category-block" id="cat1">
-  <div class="category-header">
-    <div class="category-label">第一類 · 五難</div>
-    <div class="category-name">外緣障礙　處境之難</div>
-    <div class="category-desc">這五難屬於外在條件的障礙——貧富、生死、時節因緣，非個人意志輕易可控，卻正是修行的起點。</div>
+<footer>
+  <div class="quick-btns">
+    <button class="quick-btn" onclick="sendQuick('我想寫學習單')">✏️ 我想寫學習單</button>
   </div>
-
-  <div class="nan-item" id="nan1">
-    <div class="nan-meta">
-      <span class="nan-num">一</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">貧窮布施難</div>
-    <div class="nan-sub">財物匱乏，卻能捨去慳貪</div>
-    <p class="nan-body">貧窮是過去慳貪不布施的果報。要在一無所有時仍能發心布施，需突破習氣與心理障礙。然而一旦明白「布施能把貧窮布施掉」的道理，即使物質匱乏，也能樂善好施。布施不限財施，法施、慈悲心的布施同樣產生無量福報。難與不難，端在認知是否清晰。</p>
+  <div class="input-row">
+    <textarea id="user-input" rows="1" placeholder="輸入問題，按 Enter 送出…"></textarea>
+    <button class="send-btn" id="send-btn" onclick="sendMessage()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
+    </button>
   </div>
+  <div class="footer-note">回答以課程內容為主・對話記錄自動存入 Sheets</div>
+</footer>
 
-  <div class="nan-item" id="nan2">
-    <div class="nan-meta">
-      <span class="nan-num">二</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">豪貴學道難</div>
-    <div class="nan-sub">名利富貴在握，卻能放下求道</div>
-    <p class="nan-body">擁有地位、財富與聲望之人，對所擁有的一切容易產生執著與貪愛，要他捨棄現世榮華去修行學道，並非易事。唯有了解世間一切皆無常，只有這念清淨心才是真正的富貴，捨豪貴出家學道才不再是難事。</p>
-  </div>
+<script>
+// ★ GAS WebApp 網址
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbxTG8e1a6BbAgzzA_8bKFe5eU8SXhI_nmh4doCYgDv7qg3BUUEz_E_sORnYvuEi2rOwow/exec';
 
-  <div class="nan-item" id="nan3">
-    <div class="nan-meta">
-      <span class="nan-num">三</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">棄命必死難</div>
-    <div class="nan-sub">捨去短暫色身，換來真實生命</div>
-    <p class="nan-body">捨棄生命對一般人而言極為艱難。然而修行若能悟到色身無常、唯有法身才是蓋天蓋地的真生命，「大死一番」便成為解脫的關鍵。古有比丘寧渴死而不飲有蟲之水，持戒清淨往生天界，印證了「捨命得道」的真義。</p>
-  </div>
+const messagesEl = document.getElementById('messages');
+const inputEl    = document.getElementById('user-input');
+const sendBtn    = document.getElementById('send-btn');
 
-  <div class="nan-item" id="nan4">
-    <div class="nan-meta">
-      <span class="nan-num">四</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">得睹佛經難</div>
-    <div class="nan-sub">與法相遇，還需真正契入</div>
-    <p class="nan-body">古代得見佛經須具大福報與殊勝因緣；法珍比丘尼斷臂化緣刻經、玄奘大師跋涉二十年取經，皆以生命換取佛法流通。今日佛經雖唾手可得，若視而不見、不知珍惜，等同「得睹佛經難」。真正難的，是能恭敬受持、深入契入。</p>
-  </div>
+// 學員代碼對照表（前端驗證用）
+const MEMBERS = {
+  '9168': '傳首', '6201': '法睿', '6508': '法曠', '9207': '法煥',
+  '8225': '傳普', '6030': '法涑', '1260': '傳信', '9420': '傳通',
+  '6177': '傳安', '8493': '傳強', '8999': '法士', '3293': '法治',
+  '8095': '傳護', '1185': '法孝', '8973': '法全', '6979': '傳惟',
+  '1910': '法主'
+};
 
-  <div class="nan-item" id="nan5">
-    <div class="nan-meta">
-      <span class="nan-num">五</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">生值佛世難</div>
-    <div class="nan-sub">與佛同世，需有大福報與大因緣</div>
-    <p class="nan-body">出生於佛陀住世時代，能親見丈六金身、親聞梵音，根本不需疑惑。然而此機緣極為稀有。現處末法時代，去聖日遙，信心難以生根。唯有廣集福慧資糧、誦經念佛、修供養，才能在來世得值佛世、遇佛見佛。</p>
-  </div>
-</div>
+let currentMember = null;        // { code, dharmaName }
+let conversationHistory = [];    // ★ 新增：對話歷史陣列
 
+function setMember(code, dharmaName) {
+  currentMember = { code, dharmaName };
+  // 重置對話歷史（換人重來）
+  conversationHistory = [];
+  document.getElementById('header-sub').textContent = dharmaName + ' 師兄';
+  document.getElementById('status-pill').innerHTML =
+    '<span class="dot"></span>' + dharmaName + ' 師兄 已識別';
+}
 
-<!-- ══════════════════════════
-     第二類：感官與欲望
-══════════════════════════ -->
-<div class="category-block" id="cat2">
-  <div class="category-header">
-    <div class="category-label">第二類 · 四難</div>
-    <div class="category-name">感官與欲望　身心之難</div>
-    <div class="category-desc">面對外境的誘惑、順境的貪求、逆境的憤怒、權力的腐化，都是感官與情緒層次的考驗。</div>
-  </div>
+function appendMsg(role, text) {
+  const wrap  = document.createElement('div');
+  wrap.className = 'msg-wrap ' + role;
+  const av    = document.createElement('div');
+  av.className = 'avatar ' + role;
+  av.textContent = role === 'user' ? '我' : 'AI';
+  const inner = document.createElement('div');
+  inner.className = 'msg-inner';
+  const bubble = document.createElement('div');
+  bubble.className = 'bubble ' + role;
+  bubble.textContent = text;
+  inner.appendChild(bubble);
+  wrap.appendChild(av);
+  wrap.appendChild(inner);
+  messagesEl.appendChild(wrap);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  return inner;
+}
 
-  <div class="nan-item" id="nan6">
-    <div class="nan-meta">
-      <span class="nan-num">六</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">忍色忍欲難</div>
-    <div class="nan-sub">面對五欲境界，如如不動</div>
-    <p class="nan-body">色法外境與心中欲愛，是生死的根本。修忍，從「伏忍」降伏妄想，次第到「無生法忍」乃至「寂滅忍」，方能如如不動。《佛遺教經》言「忍之為德，持戒苦行所不能及」。修行的關鍵即在一個「忍」字——忍成就了，其餘功德自然隨之成就。</p>
-  </div>
+function addSavedBadge(inner) {
+  const badge = document.createElement('div');
+  badge.className = 'saved-badge';
+  badge.innerHTML = '✓ 已存至 Sheets';
+  inner.appendChild(badge);
+}
 
-  <div class="nan-item" id="nan7">
-    <div class="nan-meta">
-      <span class="nan-num">七</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">見好不求難</div>
-    <div class="nan-sub">遇見好境界，不起貪求</div>
-    <p class="nan-body">見到好的境界時，心不動、不貪求、不強奪，是不容易的。「有求皆苦，無求即樂。」能做到「功德歸三寶，好事給他人，壞事自己承擔」，心中自然安住無諍，見好不求便不再是難事。</p>
-  </div>
+function showThinking() {
+  const wrap = document.createElement('div');
+  wrap.className = 'msg-wrap ai';
+  wrap.id = 'thinking';
+  wrap.innerHTML = '<div class="avatar ai">AI</div>'
+    + '<div class="msg-inner"><div class="bubble ai">'
+    + '<div class="thinking"><span></span><span></span><span></span></div>'
+    + '</div></div>';
+  messagesEl.appendChild(wrap);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+function removeThinking() {
+  const el = document.getElementById('thinking');
+  if (el) el.remove();
+}
 
-  <div class="nan-item" id="nan8">
-    <div class="nan-meta">
-      <span class="nan-num">八</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">被辱不瞋難</div>
-    <div class="nan-sub">受到侮辱，不起瞋恨</div>
-    <p class="nan-body">受言語羞辱或當面受窘時，不起瞋心、不發脾氣，靠的是忍辱的功夫。歷史上韓信忍「胯下之辱」而成就大業，正是明證。事情過後真相自然大白，是非有其論斷，自己也因此成就了忍辱的德行。</p>
-  </div>
+inputEl.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+});
+inputEl.addEventListener('input', function() {
+  inputEl.style.height = 'auto';
+  inputEl.style.height = Math.min(inputEl.scrollHeight, 120) + 'px';
+});
 
-  <div class="nan-item" id="nan9">
-    <div class="nan-meta">
-      <span class="nan-num">九</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">有勢不臨難</div>
-    <div class="nan-sub">握有權勢，不用以欺壓他人</div>
-    <p class="nan-body">一般人一旦有了權勢，容易仗勢欺人，乃至公報私仇。真正難的，是有了更大的力量卻選擇去做更多好事，而非令人難堪。能以此念轉換，「有勢不臨」便不是難事。</p>
-  </div>
-</div>
+// 快捷按鈕：直接送出指定文字
+function sendQuick(text) {
+  inputEl.value = text;
+  sendMessage();
+}
 
+async function sendMessage() {
+  const text = inputEl.value.trim();
+  if (!text) return;
+  inputEl.value = '';
+  inputEl.style.height = 'auto';
+  sendBtn.disabled = true;
 
-<!-- ══════════════════════════
-     第三類：心念與我執
-══════════════════════════ -->
-<div class="category-block" id="cat3">
-  <div class="category-header">
-    <div class="category-label">第三類 · 四難</div>
-    <div class="category-name">心念與我執　自心之難</div>
-    <div class="category-desc">這四難都指向同一個根源：「我」的執著。去除功德執、優越感、比較心與分別心，是修行的核心功課。</div>
-  </div>
+  // 前端先判斷：純4位數字 → 直接識別，不送 GAS
+  if (/^\d{4}$/.test(text)) {
+    appendMsg('user', text);
+    if (MEMBERS[text]) {
+      setMember(text, MEMBERS[text]);
+      const greeting = '阿彌陀佛，' + MEMBERS[text] + ' 師兄，有什麼問題想請教？';
+      appendMsg('ai', greeting);
+      // 把問候語也放入歷史，讓 Claude 知道已識別身份
+      conversationHistory.push({ role: 'assistant', content: greeting });
+    } else {
+      appendMsg('ai', '代碼不符，請確認後再試。');
+    }
+    sendBtn.disabled = false;
+    inputEl.focus();
+    return;
+  }
 
-  <div class="nan-item" id="nan10">
-    <div class="nan-meta">
-      <span class="nan-num">十</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">觸事無心難</div>
-    <div class="nan-sub">做事盡力，做後不生執著掛礙</div>
-    <p class="nan-body">「觸事」仍要做事，且要盡心盡力；「無心」是做完之後不執著功德、不起我慢，心如明鏡，「漢來漢現，像去則無」。非逃避現實，而是如《金剛經》所言：以無我、無人相修一切善法，方是真正的般若智慧。</p>
-  </div>
+  // 尚未識別身份
+  if (!currentMember) {
+    appendMsg('user', text);
+    appendMsg('ai', '師兄好，請先輸入您的4位數代碼以識別身份。');
+    sendBtn.disabled = false;
+    inputEl.focus();
+    return;
+  }
 
-  <div class="nan-item" id="nan11">
-    <div class="nan-meta">
-      <span class="nan-num">十一</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">除滅我慢難</div>
-    <div class="nan-sub">破除我執，滅盡七種慢心</div>
-    <p class="nan-body">慢、過慢、慢過慢、我慢、增上慢、卑慢、邪慢——七慢皆以我慢為根本。要除滅我慢，須修析空觀：色身是四大假合，受想行識亦是空性，無我亦無我所。反覆緣真，待觀行成就，一念相應，便能契入空性，根本瓦解慢心。</p>
-  </div>
+  // ★ 已識別身份：組合帶法名的訊息，加入歷史，一起送給 GAS
+  const msgWithId = '【學員：' + currentMember.dharmaName + ' 師兄（已驗證）】\n' + text;
+  const userInner = appendMsg('user', text);   // ★ 直接儲存 inner 元素
+  showThinking();
 
-  <div class="nan-item" id="nan12">
-    <div class="nan-meta">
-      <span class="nan-num">十二</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">不輕未學難</div>
-    <div class="nan-sub">以平等心對待尚未入道者</div>
-    <p class="nan-body">修行有先後、戒臘有長幼，但「有道不在年高」，悟道靠根機與因緣。一切眾生皆有佛性，皆當成佛，新學或許一念相應便超越老參。常不輕菩薩禮拜一切眾生的精神，告誡我們：以慈悲謙卑對待每一個人，輕視未學只是慢心的障礙。</p>
-  </div>
+  // 把這次用戶訊息加入歷史
+  conversationHistory.push({ role: 'user', content: msgWithId });
 
-  <div class="nan-item" id="nan13">
-    <div class="nan-meta">
-      <span class="nan-num">十三</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">心行平等難</div>
-    <div class="nan-sub">佛性平等，慈悲接引每一個人</div>
-    <p class="nan-body">佛性平等，但迷悟有別、修行有層次。「心行平等」不是抹去差別，而是以平等的慈悲心接引每一個眾生——富貴者鼓勵其繼續修行，貧苦者讚歎其於困境中仍能學佛。時時發大願、起大悲、修大行，才能真正做到心行平等。</p>
-  </div>
-</div>
+  try {
+    const res = await fetch(GAS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        messages : conversationHistory,         // ★ 傳整段對話歷史
+        timestamp: new Date().toISOString()
+      })
+    });
+    const data = await res.json();
+    removeThinking();
 
+    if (data.reply) {
+      appendMsg('ai', data.reply);
+      // ★ 把 AI 回覆也加入歷史，下次帶上
+      conversationHistory.push({ role: 'assistant', content: data.reply });
+      if (data.saved) addSavedBadge(userInner);
+    } else {
+      appendMsg('ai', '⚠️ ' + (data.error || '回應格式異常'));
+      // 送出失敗，把剛才加入的 user 訊息移除，避免歷史錯亂
+      conversationHistory.pop();
+    }
+  } catch (err) {
+    removeThinking();
+    appendMsg('ai', '❌ 連線失敗：' + err.message);
+    conversationHistory.pop();
+  }
 
-<!-- ══════════════════════════
-     第四類：言行與關係
-══════════════════════════ -->
-<div class="category-block" id="cat4">
-  <div class="category-header">
-    <div class="category-label">第四類 · 三難</div>
-    <div class="category-name">言行與關係　處世之難</div>
-    <div class="category-desc">與人相處的口業管理、識別真正的善知識、以及學習的廣度與深度——屬於在群體與社會中修行的難點。</div>
-  </div>
-
-  <div class="nan-item" id="nan14">
-    <div class="nan-meta">
-      <span class="nan-num">十四</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">不說是非難</div>
-    <div class="nan-sub">守護口業，不傳播人我是非</div>
-    <p class="nan-body">眼見的世間事往往非真相，以訛傳訛只會釀禍。即便見到他人的過失，宣揚出去舌根即不清淨，自己也捲入是非。「若見他人非，自非卻是左」——向內觀心返照，檢討身口意三業，自然無暇說人是非。謠言止於智者，正念者沉默。</p>
-  </div>
-
-  <div class="nan-item" id="nan15">
-    <div class="nan-meta">
-      <span class="nan-num">十五</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">會善知識難</div>
-    <div class="nan-sub">遇見真正能引導見性的善知識</div>
-    <p class="nan-body">能講述正知見、勸人斷惡修善，乃至引導明心見性的人，才是善知識。說人三世因果、論風水禍福者，是邪知邪見而非善知識。遇到真正的善知識，需有自己的福德因緣與願行，遇到了更要虛心學習，方不辜負這份難得的法緣。</p>
-  </div>
-
-  <div class="nan-item" id="nan16">
-    <div class="nan-meta">
-      <span class="nan-num">十六</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">廣學博究難</div>
-    <div class="nan-sub">博覽通達，歸於自性</div>
-    <p class="nan-body">修行不能一知半解，菩薩須向內明、醫方明、工巧明、聲明、因明五明處廣學。聞而思，思而修，由博而約、約而精、精而明，最終歸於自性。廣學的目的是通達一切方便法門，以慈悲智慧利益眾生、圓滿菩薩願行。</p>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════
-     第五類：境界與智慧
-══════════════════════════ -->
-<div class="category-block" id="cat5">
-  <div class="category-header">
-    <div class="category-label">第五類 · 四難</div>
-    <div class="category-name">境界與智慧　道力之難</div>
-    <div class="category-desc">修行較深層的成就：見性是根本，定力是基礎，度人是大悲的展現，善解方便是智慧的圓熟。</div>
-  </div>
-
-  <div class="nan-item" id="nan17">
-    <div class="nan-meta">
-      <span class="nan-num">十七</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">見性學道難</div>
-    <div class="nan-sub">學道如牛毛，悟道如麟角</div>
-    <p class="nan-body">「性」即師父說法、諸位聽法的這念心。悟到了，是真正進入修道位，之後圓修六波羅蜜而不執著，如如不動。未見性前，則從事上用功——誦經、持咒、打坐、廣修善法——由事到理，業障消除，自能漸漸契悟本心。</p>
-  </div>
-
-  <div class="nan-item" id="nan18">
-    <div class="nan-meta">
-      <span class="nan-num">十八</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">隨化度人難</div>
-    <div class="nan-sub">因緣而化，普度有情</div>
-    <p class="nan-body">隨著因緣以佛法啟發眾生、引導出世善根，需要智慧、慈悲、願行與福德兼備。辦法會、設道場、把握時節因緣，讓人產生法喜與禪悅，一旦善根慧根現前，使人發出世心，便是隨化度人的成就。每一個善緣，都是渡人的機會。</p>
-  </div>
-
-  <div class="nan-item" id="nan19">
-    <div class="nan-meta">
-      <span class="nan-num">十九</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">睹境不動難</div>
-    <div class="nan-sub">八風吹不動，順逆皆安住</div>
-    <p class="nan-body">稱、譏、毀、譽、利、衰、苦、樂「八風」現前，心要如如不動。非迷糊傻瓜，而是真正有定力——定生智慧，智慧轉境。心清淨，外境隨之轉化為淨土；逃境安心是治標，契悟本心才是根本。平時薰習禪定，臨境自然不為所動。</p>
-  </div>
-
-  <div class="nan-item" id="nan20">
-    <div class="nan-meta">
-      <span class="nan-num">二十</span>
-      <span class="nan-badge">難</span>
-    </div>
-    <div class="nan-title">善解方便難</div>
-    <div class="nan-sub">通達八萬四千法門，開權顯實</div>
-    <p class="nan-body">方便法門是度眾生的船，沒有方便就無法弘揚佛法。但「善解」在前，「善開」在後——先通達各種方便的意趣與限度，再因材施教開展方便，否則「方便多下流」。一切方便皆為實相而立，最終開權顯實，歸於中道菩提涅槃，是修行的究竟目標。</p>
-  </div>
-</div>
-
-<!-- ══ 結語 ══ -->
-<div class="closing">
-  <p>「難與不難，都決定在這念心。<br>明白其中的道理，任何事都不難；<br>不明白道理，什麼事情都很困難。」</p>
-  <p style="margin-top:0.8rem;font-size:0.9rem;">煩惱即菩提，二十難皆是通達出世菩提涅槃的關口。</p>
-  <span class="mark">◈ ◈ ◈</span>
-</div>
-
+  sendBtn.disabled = false;
+  inputEl.focus();
+}
+</script>
 </body>
 </html>
